@@ -13,6 +13,13 @@ let y;
 //Create a variable that will store our image
 let img;
 
+var ballX = 400;
+var ballY = 0;
+var ballSize = 50;
+var xSpeed = 5;
+var ySpeed = 5;
+
+var circleHit;
 function preload() {
   //Assign the image file to the variable
   img = loadImage('alien.png');
@@ -102,8 +109,16 @@ function draw() {
       y=height/2;
       level=1;
     }
-  }
+
   /*--------------------END WIN SCREEN--------------------*/
-
-
 }
+if (mouseIsPressed)
+  ballY = ballY + ySpeed;
+}
+  function keyPressed() {
+  if (keyCode === 13) {
+    fill(255,0,0);
+    ellipse(ballX,ballY,ballSize);
+  }
+}
+
