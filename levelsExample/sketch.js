@@ -54,6 +54,7 @@ function draw() {
     text('Press enter to continue', width/2, height/2+100);
 
     //If they press enter, move to the next level (game)
+
     if (keyIsDown(ENTER)) {
       level+=1;
     }
@@ -65,6 +66,7 @@ function draw() {
   else if (level ===1) {
 
     //Change the background and add the character
+
     background(255);
     image(img,x,y);
 
@@ -112,13 +114,15 @@ function draw() {
 
   /*--------------------END WIN SCREEN--------------------*/
 }
-if (mouseIsPressed)
-  ballY = ballY + ySpeed;
+  if (level == 1) {
+  fill(255,0,0);
+  ellipse(ballX,ballY,ballSize);
 }
-  function keyPressed() {
-  if (keyCode === 13) {
-    fill(255,0,0);
-    ellipse(ballX,ballY,ballSize);
-  }
+  if (mouseIsPressed) {
+    ballY = ballY + ySpeed;
 }
-
+}
+function doubleClicked() {
+  if (ballX<800 || ballX>0)
+  ballX = ballX + xSpeed
+}
