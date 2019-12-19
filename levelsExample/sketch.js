@@ -14,10 +14,13 @@ let y;
 let img;
 
 var ballX = 400;
-var ballY = 0;
+var ballY = 50;
 var ballSize = 50;
 var xSpeed = 5;
 var ySpeed = 5;
+
+var alienHeadX = 432
+var alienHeadY = 342
 
 var circleHit;
 function preload() {
@@ -50,8 +53,8 @@ function draw() {
     text('ALIEN DOMINATION', width/2, height/2);
 
     textSize(16);
-    text('You are a member of the Glorg alien race, a species determined to take over the earth. \nUse your arrow keys to move your character off of the screen to win.', width/2, height/2+50);
-    text('Press enter to continue', width/2, height/2+100);
+    text('The Glorg alien race, is a species determined to take over the earth. \nUse your arrow keys to use your ball to touch the alien to stop it from getting to earth.', width/2, height/2+50);
+    text('Press enter to start level one (with each passing level, you get slower and the alien gets faster)', width/2, height/2+100);
 
     //If they press enter, move to the next level (game)
 
@@ -68,23 +71,23 @@ function draw() {
     //Change the background and add the character
 
     background(255);
+    ellipse(alienHeadX,alienHeadY,42)
     image(img,x,y);
-
     //Move the character based on input from the user (arrow keys)
     if (keyIsDown(RIGHT_ARROW)) {
-      x+=5;
+    ballX = ballX + xSpeed
     }
 
     if (keyIsDown(LEFT_ARROW)) {
-      x-=5;
+      ballX = ballX + -xSpeed
     }
 
     if (keyIsDown(UP_ARROW)) {
-      y-=5;
+      ballY = ballY + -ySpeed;
     }
 
     if (keyIsDown(DOWN_ARROW)) {
-      y+=5;
+      ballY = ballY + ySpeed;
     }
 
     //If the user leaves the screen, they win so move on to the next level (win)
@@ -114,15 +117,35 @@ function draw() {
 
   /*--------------------END WIN SCREEN--------------------*/
 }
+//When the level starts, this draw a ball
   if (level == 1) {
   fill(255,0,0);
   ellipse(ballX,ballY,ballSize);
+
+
 }
-  if (mouseIsPressed) {
-    ballY = ballY + ySpeed;
+//This stops the ball from going off the screen
+if (ballX>775) {
+  ballX = 775;
 }
+if (ballX<25) {
+  ballX = 25;
 }
-function doubleClicked() {
-  if (ballX<800 || ballX>0)
-  ballX = ballX + xSpeed
+if (ballY>575) {
+  ballY = 575;
+}
+if (ballY<25) {
+  ballY = 25;
+}
+//shows the win screen if the fifth level has been won
+if (level == 3)
+//Shows the lose screen if the alien touches the edge
+if (alienHeadX>750 || alienHeadX<0) {
+  background(200,0,0);
+  text ('The Glorg alien race have taken over', width/2, height/2);
+}
+if (alienHeadY>550 || alienHeadY<0) {
+  background(200,0,0);
+  text ('The Glorg alien race have taken over', width/2, height/2);
+}
 }
