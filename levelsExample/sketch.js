@@ -119,9 +119,9 @@ function draw() {
       y=height/2;
       level=1;
     }
-}
-//When the level starts, this draw a ball
-if (level == 1) {
+
+//When the level starts, this draws a ball
+if (level == 1 || level == 2 || level == 3) {
   fill(255,0,0);
   ellipse(ballX,ballY,ballSize);
 }
@@ -152,10 +152,10 @@ if(level == 2) {
     fill(255, 255, 255);
     text('You Win!', windowWidth/2, windowHeight/2);
   }
-}
+
 
 hitAlien()
-
+}
 function hitAlien() {
    playerHitAlien = collideCircleCircle(ballX,ballY,ballSize,x,y,42);
    if (playerHitAlien == true) {
