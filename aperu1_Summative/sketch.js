@@ -37,7 +37,7 @@ var rect3Hit;
 var rect4Hit;
 
 //the levels o the game
-let level = 0;
+let level = 3;
 
 //Create the x and y variables for the enemy's and circles
 var x = 300;
@@ -142,10 +142,10 @@ function draw() {
 
 	textSize(16);
 	text('Use the right and left arrow keys to move across the ground. \nThe enemy will throw a ball that you must hit back for it to lose 1 of its health \n(it will have three). If you miss a ball, you will lose one of your three health.\nIf you miss the enemy, it will throw another after. WIth each passing level, \nthere will be another enemy and \nanother shape the enemy will throw at you \nif you touch the other shape. (it will either slow you down or freeze you).', width/2, height/2+50);
-	text('Press enter to continue', width/2, height/2+200);
+	text('Press shift to continue and enter to restart whenever', width/2, height/2+200);
 
 	//If they press enter, move to the next level
-	if (keyIsDown(ENTER)) {
+	if (keyIsDown(16)) {
   	level+=1;
   	whistle.play();
 	}
@@ -423,6 +423,9 @@ if (level == 4){
 if(level == 5){
   background(220);
   text('You win', width/2, height/2)
+}
+if(keyIsDown(ENTER)){
+  level = 0
 }
   //The blocks movement and restrictions
   rect(blockX,blockY,80,30);
