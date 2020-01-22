@@ -37,7 +37,7 @@ var rect3Hit;
 var rect4Hit;
 
 //the levels o the game
-let level = 3;
+let level = 0;
 
 //Create the x and y variables for the enemy's and circles
 var x = 300;
